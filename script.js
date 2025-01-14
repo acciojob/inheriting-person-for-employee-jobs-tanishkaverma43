@@ -1,6 +1,7 @@
 function Person(name, age) {
   this.name = name;
   this.age = age;
+  console.log(this.greet());
 }
 
 Person.prototype.greet = function() {
@@ -10,6 +11,7 @@ Person.prototype.greet = function() {
 function Employee(name, age, jobTitle) {
   Person.call(this, name, age);
   this.jobTitle = jobTitle;
+  console.log(this.jobGreet());
 }
 
 Employee.prototype = Object.create(Person.prototype);
@@ -20,10 +22,7 @@ Employee.prototype.jobGreet = function() {
 }
 
 var alice = new Person('Alice', 25);
-console.log(alice.greet());
-
 var bob = new Employee('Bob', 30, 'Manager');
-console.log(bob.jobGreet());
 
 window.Person = Person;
 window.Employee = Employee;
